@@ -1,0 +1,7 @@
+document.addEventListener("click", function(e) {
+  if(e.target && e.target.nodeName == "A") {
+  console.log("List item ", e.target.textContent, " was clicked!");
+  }
+});
+// When we click the 2nd item, the page prints out:
+"List item Item 2 was clicked!"
