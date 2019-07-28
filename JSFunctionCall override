@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to make a BUTTON element with text.</p>
+
+<button onclick="s()">Try it</button>
+<input type="text" id="filter"/>
+<ul id="list">
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
+</ul>
+
+<script>
+class Demo {
+  constructor() {
+    this.ok = 'ok';
+  }
+
+  printStuff(stuff) {
+    console.log(this.ok + stuff);
+  }
+};
+
+const d = new Demo();
+
+var ok = function printOk() {
+  this.ok = 'weird stuff';
+  d.printStuff.call(this, " wasn't that cool");
+  console.log(ok);
+  console.log(this.ok);
+  ok = 'override';
+}
+
+ok();
+//ok() -> will cause runtime error
+
+function displayF() {
+
+  
+  if(hotels == undefined || hotels == null) {
+    return;
+  }
+  //alert(hotels);
+  hotels = JSON.parse(hotels);
+  alert(hotels);
+  let element = document.getElementById("list");
+  let documentFragment = document.createDocumentFragment();
+  let filter = document.getElementById("filter").value;
+  
+  hotels.forEach(function(hotel) {
+    //document.write(hotel.rating);
+    if(hotel.rating != undefined && filter < hotel.rating) {
+	  let newHotel = document.createElement("LI");
+	  newHotel.innerHTML = JSON.stringify(hotel);
+	  documentFragment.appendChild(newHotel);
+	}
+  });
+  
+  element.appendChild(documentFragment);
+}
+</script>
+
+</body>
+</html>
